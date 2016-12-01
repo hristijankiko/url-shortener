@@ -13,10 +13,14 @@ module.exports.createLink = function(req, res){
     return;
   }
   let _id = shortid.generate();
+  let url = "http://localhost:3000/";
+  if(process.env.NODE_ENV === "production"){
+    url = "https://hristijanurl-shortener.herokuapp.com/";
+  }
   ShortUrl.create({
     _id: _id,
     original_url: req.params[0],
-    short_url: 'http://localhost:3000/' + _id
+    short_url: url + _id
   }, function(err, shortUrl){
     if(err){
       console.error(err);
