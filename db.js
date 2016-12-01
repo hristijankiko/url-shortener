@@ -3,7 +3,7 @@ mongoose.Promise = require('bluebird');
 let url = "mongodb://localhost/url-creater" 
 
 if(process.env.NODE_ENV === 'production'){
-  url = "mongodb://hristijankiko:test@ds113938.mlab.com:13938/short-url";
+  url = "mongodb://"+ process.env.MLAB_USERNAME +":"+ process.env.MLAB_SECRET +"@ds113938.mlab.com:13938/short-url";
 };
 
 mongoose.connect(url);
